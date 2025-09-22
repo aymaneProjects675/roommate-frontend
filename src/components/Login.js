@@ -14,7 +14,6 @@ function Login() {
         password: password
       });
       setMessage(response.data);
-      // Store token if login successful
       if (response.data.includes('Token:')) {
         const token = response.data.split('Token: ')[1];
         localStorage.setItem('jwt', token);
@@ -25,26 +24,30 @@ function Login() {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
+    <div className="auth-container">
+      <h2 className="form-title">Welcome Back</h2>
       <form onSubmit={handleLogin}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button type="submit">Login</button>
+        <div className="form-group">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="password"
+            placeholder="Enter your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit" className="btn">Sign In</button>
       </form>
-      {message && <p>{message}</p>}
+      {message && <div className="message">{message}</div>}
     </div>
   );
 }
