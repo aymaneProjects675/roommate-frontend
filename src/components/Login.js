@@ -9,7 +9,7 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8080/api/login', {
+      const response = await axios.post('https://roommate-finder-production-a91d.up.railway.app/api/login', {
         email: email,
         password: password
       });
